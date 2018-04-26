@@ -8,6 +8,9 @@ var routes = (app) => {
         scope: ['profile', 'email']
     })
     );
+    app.get('/', (req, res) => {
+        res.redirect('/client/login');
+    })
     app.get(
         '/auth/google/callback',
         passport.authenticate('google'),
