@@ -32,16 +32,16 @@ passport.use(
           if (doc && doc.email === profile.emails[0].value) {
             done(null, doc);
           } else {
-                    User({
-                      googleId: profile.id,
-                      firstName: profile.name.givenName + profile.name.familyName,
-                      email: profile.emails[0].value
-                    }).save().then(
-                      (doc) => {
-                        console.log('here');
-                        done(null, doc);
-                      }
-                    );
+              User({
+                googleId: profile.id,
+                firstName: profile.name.givenName + profile.name.familyName,
+                email: profile.emails[0].value
+              }).save().then(
+                (doc) => {
+                console.log('here');
+                done(null, doc);
+              }
+            );
           }
         }
       )

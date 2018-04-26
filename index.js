@@ -7,11 +7,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 const { keys } = require('./keys/keys');
 var bodyParser = require('body-parser');
-const app = express();
+const { routes } = require('./Routes/authRoutes');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://srijanreddy98:chintu98@ds155699.mlab.com:55699/furlenco');
 require('./services/passport');
-const { routes } = require('./Routes/authRoutes');
+
+
+const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -28,6 +30,7 @@ app.use(express.static(__dirname + '/dist'));
 app.get('/client/*', function (req, res) {
     res.sendFile(path.join(__dirname + '/dist', 'index.html'));
 });
+
 app.use(passport.initialize());
 app.use(passport.session());
 routes(app);
