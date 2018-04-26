@@ -1,5 +1,4 @@
 const passport = require('passport');
-const passport2 = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
@@ -104,5 +103,14 @@ passport.use(new TwitterStrategy({
         }
       }
     );
+  }
+));
+passport.use(new InstagramStrategy({
+  clientID: keys.InstaClientID,
+  clientSecret: keys.InstaClient_secret,
+  callbackURL: "/auth/instagram/callback"
+},
+  function (accessToken, refreshToken, profile, done) {
+    console.log(profile);
   }
 ));

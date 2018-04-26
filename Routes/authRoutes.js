@@ -1,5 +1,4 @@
 const passport = require('passport');
-const passport2 = require('passport');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 const { User, Playlist } = require('../models/models');
