@@ -7,11 +7,15 @@ const userSchema = new Schema({
         type: String,
         default: null
     },
-    firstName: {
+    twitterId: {
         type: String,
         default: null
     },
-    lastName: {
+    twitterUserName: {
+        type:String,
+        default: null
+    },
+    name: {
         type: String,
         default: null
     },
@@ -22,6 +26,12 @@ const userSchema = new Schema({
       default: false
     }
 });
-
+const playlistSchema = new Schema ({
+    userId: String,
+    name: String,
+    tags: [String],
+    songs: [String]
+});
 var User = mongoose.model('users', userSchema);
-module.exports = { User };
+var Playlist = mongoose.model('playlist', playlistSchema);
+module.exports = { User, Playlist };

@@ -24,10 +24,10 @@ app.use(
     })
 );
 app.use(cookieParser());
-// app.use(express.static(__dirname + '/dist'));
-// app.get('/*', function (req, res) {
-//     res.sendFile(path.join(__dirname + '/dist', 'index.html'));
-// });
+app.use(express.static(__dirname + '/dist'));
+app.get('/client/*', function (req, res) {
+    res.sendFile(path.join(__dirname + '/dist', 'index.html'));
+});
 app.use(passport.initialize());
 app.use(passport.session());
 routes(app);
